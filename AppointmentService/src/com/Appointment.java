@@ -137,7 +137,7 @@ public class Appointment {
 					{return "Error while connecting to the database for updating."; }
 			
 					// create a prepared statement
-					String query = "update hospital set id=?,hospitalid=?,patientid=?,date=?,time=?,description=?,status=? where id=?;";
+					String query = "update appointments set id=?,hospitalid=?,patientid=?,date=?,time=?,description=?,status=? where id=?;";
 									
 					PreparedStatement preparedStmt = con.prepareStatement(query);
 			
