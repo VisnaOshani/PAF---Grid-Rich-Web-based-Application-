@@ -8,7 +8,7 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="Views/css/bootstrap.min.css">
 <script src="Components/jquery-3.2.1.min.js"></script>
-<script src=Components/hospital.js></script>
+<script src=Components/appointment.js></script>
 <title>Appointment Management</title>
 <style>
 </style>
