@@ -29,7 +29,7 @@ $(document).on("click", "#btnSave", function(event)
 	//If valid-------------------------
 	var type = ($("#hidAppIDSave").val() == "" ) ? "POST"  : "PUT";
 	
-	
+	//AJAX for save
 	$.ajax(
 	{
 		url : "AppointmentAPI",
@@ -43,6 +43,8 @@ $(document).on("click", "#btnSave", function(event)
 	}); 
 });
 
+
+//onAppointmentSaveComplete function
 function onAppointmentSaveComplete(response, status)
 {
 	if (status == "success")
@@ -88,26 +90,28 @@ $(document).on("click", ".btnUpdate",function(event)
 	$("#date").val($(this).closest("tr").find('td:eq(3)').text());
 	$("#time").val($(this).closest("tr").find('td:eq(4)').text());
 	$("#description").val($(this).closest("tr").find('td:eq(5)').text());
-	//$("#status").val($(this).closest("tr").find('td:eq(6)').bool());
+	
 	
 });
 
 //DELETE==========================================================
 $(document).on("click", ".btnRemove", function(event)
 {
+	//AJAX for delete
 	$.ajax(
+		{
+			url : "AppointmentAPI",
+			type : "DELETE",
+			data : "id=" + $(this).data("id"),
+			dataType : "text",
+			complete : function(response, status)
 			{
-				url : "AppointmentAPI",
-				type : "DELETE",
-				data : "id=" + $(this).data("id"),
-				dataType : "text",
-				complete : function(response, status)
-				{
-					onAppointmentDeleteComplete(response.responseText, status);
-				}
-			});
-	}); 
+				onAppointmentDeleteComplete(response.responseText, status);
+			}
+	});
+}); 
 
+//onAppointmentDeleteComplete function
 function onAppointmentDeleteComplete(response, status)
 {
 	if (status == "success")

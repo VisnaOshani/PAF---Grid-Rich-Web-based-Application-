@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class Appointment {
 
-	// A common method to connect to the DB
+		//A common method to connect to the DB
 		private Connection connect()
 		{
 			Connection con = null;
@@ -16,6 +16,7 @@ public class Appointment {
 			try
 			{
 				Class.forName("com.mysql.cj.jdbc.Driver");
+				
 				//Provide the correct details: DBServer/DBName, username, password
 				con = DriverManager.getConnection(url, "root", "");
 			}
@@ -33,13 +34,13 @@ public class Appointment {
 				Connection con = connect();
 					if (con == null)
 					{return "Error while connecting to the database for inserting."; }
+					
 					// create a prepared statement
 					String query = " insert into appointments(`id`,`hospitalid`,`patientid`,`date`,`time`,`description`,`status`)"
 							+ " values (?,?,?,?,?,?,?)";
 					
 					PreparedStatement preparedStmt = con.prepareStatement(query);
 					
-					//System.out.println("New Time = " + newTime);
 					// binding values
 					preparedStmt.setString(1, id);
 					preparedStmt.setString(2, hospitalid);
@@ -64,6 +65,8 @@ public class Appointment {
 				
 				return output;
 			}
+		
+		
 			// read function
 			public String readAppointment()
 			{
@@ -123,6 +126,7 @@ public class Appointment {
 				return output;
 			}
 	 		
+			
 			// Update function
 			public String updateAppointment(String hospitalid, String patientid, String date, String time, String description, String status, String id)
 			{
@@ -151,6 +155,7 @@ public class Appointment {
 					preparedStmt.setString(7, id);
 			
 					System.out.println("update method called: " + id);
+					
 					// execute the statement
 					preparedStmt.execute();
 					con.close();
@@ -165,6 +170,8 @@ public class Appointment {
 			}
 				return output;
 		}
+			
+			
 		//Delete function
 		public String deleteAppointment(String id)
 		{

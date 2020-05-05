@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AppointmentAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	//create new object
 	Appointment appObj = new Appointment();
        
     /**
@@ -42,9 +43,8 @@ public class AppointmentAPI extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 	
-
+		//boolean value for insertion
 		boolean status= Boolean.parseBoolean(request.getParameter("status"));
-		System.out.println(request.getParameter("id"));
 		
 		String output = appObj.insertAppointment(request.getParameter("id"),
 												request.getParameter("hospitalid"),
@@ -54,10 +54,8 @@ public class AppointmentAPI extends HttpServlet {
 												request.getParameter("description"),
 												status);
 		
-		response.getWriter().write(output);
-														
-				
-		// TODO Auto-generated method stub
+		response.getWriter().write(output);				
+		
 //		doGet(request, response);
 	}
 
@@ -66,19 +64,16 @@ public class AppointmentAPI extends HttpServlet {
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
+		
 		Map paras = getParasMap(request);
+		
+		//replacing time format ":" 
 		String newTime = paras.get("time").toString().replace("%3A", ":");
 		
+		//replacing description "+" sign
 		String des = paras.get("description").toString();
 		String newDescription = des.replace("+", " ");
 		
-		//String status = "";
-		
-//		if (paras.get("status").toString().equals("true"))
-//			status = "1";
-//		else
-//			status = "0";
 		
 		String output = appObj.updateAppointment(
 				paras.get("hospitalid").toString(),
@@ -91,6 +86,8 @@ public class AppointmentAPI extends HttpServlet {
 		
 		response.getWriter().write(output);
 	}
+	
+	//method to convert boolean value 
 	public String boolConvert(String inBool) {
 		if(inBool.equals("true")) {
 			return "1";
