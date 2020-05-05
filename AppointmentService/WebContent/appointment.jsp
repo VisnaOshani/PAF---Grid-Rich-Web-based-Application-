@@ -40,10 +40,10 @@
 				           		class="form-control form-control-sm">
 					<br>
 				    <p>Status:</p>
-					<input type="radio" id="status" name="status" value="Yes">
-					<label for="Yes">Yes</label>
-					<input type="radio" id="status" name="status" value="No">
-					<label for="No">No</label>
+					<input type="radio" id="status" name="status" value="true">
+					<label for="true">Yes</label>
+					<input type="radio" id="status" name="status" value="false">
+					<label for="false">No</label>
 					<br>
 					<br> 
 				    <input id="btnSave" name="btnSave" type="button" value="Save"

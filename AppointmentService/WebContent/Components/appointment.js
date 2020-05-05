@@ -88,7 +88,7 @@ $(document).on("click", ".btnUpdate",function(event)
 	$("#date").val($(this).closest("tr").find('td:eq(3)').text());
 	$("#time").val($(this).closest("tr").find('td:eq(4)').text());
 	$("#description").val($(this).closest("tr").find('td:eq(5)').text());
-	$("#status").val($(this).closest("tr").find('td:eq(6)').bool());
+	//$("#status").val($(this).closest("tr").find('td:eq(6)').bool());
 	
 });
 

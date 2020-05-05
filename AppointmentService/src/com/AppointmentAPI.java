@@ -73,12 +73,12 @@ public class AppointmentAPI extends HttpServlet {
 		String des = paras.get("description").toString();
 		String newDescription = des.replace("+", " ");
 		
-		String status = "";
+		//String status = "";
 		
-		if (paras.get("status").toString().equals("true"))
-			status = "1";
-		else
-			status = "0";
+//		if (paras.get("status").toString().equals("true"))
+//			status = "1";
+//		else
+//			status = "0";
 		
 		String output = appObj.updateAppointment(
 				paras.get("hospitalid").toString(),
@@ -86,10 +86,18 @@ public class AppointmentAPI extends HttpServlet {
 				paras.get("date").toString(),
 				newTime,
 				newDescription,
-				status,
+				boolConvert(paras.get("status").toString()),
 				paras.get("id").toString());
 		
 		response.getWriter().write(output);
+	}
+	public String boolConvert(String inBool) {
+		if(inBool.equals("true")) {
+			return "1";
+		}
+		else {
+			return "0";
+		}
 	}
 
 	/**
