@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-
-
 public class Appointment {
 
 	// A common method to connect to the DB
@@ -41,6 +39,7 @@ public class Appointment {
 					
 					PreparedStatement preparedStmt = con.prepareStatement(query);
 					
+					//System.out.println("New Time = " + newTime);
 					// binding values
 					preparedStmt.setString(1, id);
 					preparedStmt.setString(2, hospitalid);
@@ -125,7 +124,7 @@ public class Appointment {
 			}
 	 		
 			// Update function
-			public String updateAppointment(String id, String hospitalid, String patientid, String date, String time, String description, String status)
+			public String updateAppointment(String hospitalid, String patientid, String date, String time, String description, String status, String id)
 			{
 			String output = "";
 			
@@ -137,20 +136,21 @@ public class Appointment {
 					{return "Error while connecting to the database for updating."; }
 			
 					// create a prepared statement
-					String query = "update appointments set id=?,hospitalid=?,patientid=?,date=?,time=?,description=?,status=? where id=?;";
+					String query = "update appointments set hospitalid=?, patientid=?, date=?, time=?, description=?, status=? where id=?;";
 									
 					PreparedStatement preparedStmt = con.prepareStatement(query);
 			
 					// binding values
-					preparedStmt.setString(0, id);
+					
 					preparedStmt.setString(1, hospitalid);
 					preparedStmt.setString(2, patientid);
 					preparedStmt.setString(3, date);
 					preparedStmt.setString(4, time);
 					preparedStmt.setString(5, description);
 					preparedStmt.setString(6, status);
-	
+					preparedStmt.setString(7, id);
 			
+					System.out.println("update method called: " + id);
 					// execute the statement
 					preparedStmt.execute();
 					con.close();

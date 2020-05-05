@@ -68,15 +68,26 @@ public class AppointmentAPI extends HttpServlet {
 	{
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request);
+		String newTime = paras.get("time").toString().replace("%3A", ":");
+		
+		String des = paras.get("description").toString();
+		String newDescription = des.replace("+", " ");
+		
+		String status = "";
+		
+		if (paras.get("status").toString().equals("true"))
+			status = "1";
+		else
+			status = "0";
 		
 		String output = appObj.updateAppointment(
-				paras.get("id").toString(),
 				paras.get("hospitalid").toString(),
 				paras.get("patientid").toString(),
 				paras.get("date").toString(),
-				paras.get("time").toString(),
-				paras.get("description").toString(),
-				paras.get("status").toString());
+				newTime,
+				newDescription,
+				status,
+				paras.get("id").toString());
 		
 		response.getWriter().write(output);
 	}

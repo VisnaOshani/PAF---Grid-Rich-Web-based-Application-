@@ -29,6 +29,7 @@ $(document).on("click", "#btnSave", function(event)
 	//If valid-------------------------
 	var type = ($("#hidAppIDSave").val() == "" ) ? "POST"  : "PUT";
 	
+	
 	$.ajax(
 	{
 		url : "AppointmentAPI",
@@ -74,19 +75,24 @@ function onAppointmentSaveComplete(response, status)
 	$("#formAppointment")[0].reset();
 	}
 
-//UPDATE==============================================
+//UPDATE=========================================================
 $(document).on("click", ".btnUpdate",function(event)
 {
-	$("#hidAppIDSave").val($(this).closest("tr").find('#hidAppIDUpdate').val());
+	//$("#hidAppIDSave").val(
+			//$(this).closest("tr").find('#hidAppIDUpdate').val());
+	console.log($(this).closest("tr"));
+	document.getElementById("hidAppIDSave").value = "Update";
 	$("#id").val($(this).closest("tr").find('td:eq(0)').text());
 	$("#hospitalid").val($(this).closest("tr").find('td:eq(1)').text());
 	$("#patientid").val($(this).closest("tr").find('td:eq(2)').text());
 	$("#date").val($(this).closest("tr").find('td:eq(3)').text());
 	$("#time").val($(this).closest("tr").find('td:eq(4)').text());
 	$("#description").val($(this).closest("tr").find('td:eq(5)').text());
-	$("#status").val($(this).closest("tr").find('td:eq(11)').text());
+	$("#status").val($(this).closest("tr").find('td:eq(6)').bool());
+	
 });
 
+//DELETE==========================================================
 $(document).on("click", ".btnRemove", function(event)
 {
 	$.ajax(
@@ -176,18 +182,6 @@ function validationAppointmentForm()
 		return "Insert status.";
 	}
 	
-	
-//	//ID
-//	if($("#phnNo").val().trim() == "")
-//	{
-//		return "Insert Phone Number.";
-//	}
-//	
-//	var pnNo = $("#phnNo").val().trim();
-//	if (!$.isNumeric(pnNo))
-//	{
-//		return "Insert a valid phone no!.";
-//	} 
 	
 	return true;
 }

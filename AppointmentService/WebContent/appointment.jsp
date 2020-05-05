@@ -17,7 +17,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
-				<h1 style="text-align:center">Appointment Management</h1>
+				<h2 style="text-align:center">Appointment Management</h2>
+				<br>
 				<form id="formAppointment" name="formAppointment" method="post" action="appointment.jsp">
 				  	Appointment ID:
 				  	<input id="id" name="id" type="text" 
@@ -37,13 +38,13 @@
 				     <br>  Description:
 				   	<input id="description" name="description" type="text"
 				           		class="form-control form-control-sm">
-
+					<br>
 				    <p>Status:</p>
-					<input type="radio" id="status" name="status" value="true">
-					<label for="Yes">True</label>
-					<input type="radio" id="status" name="status" value="false">
-					<label for="No">False</label>
-					
+					<input type="radio" id="status" name="status" value="Yes">
+					<label for="Yes">Yes</label>
+					<input type="radio" id="status" name="status" value="No">
+					<label for="No">No</label>
+					<br>
 					<br> 
 				    <input id="btnSave" name="btnSave" type="button" value="Save"
 				          class="btn btn-primary">
